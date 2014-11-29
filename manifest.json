@@ -1,13 +1,22 @@
 {
+  "browser_action" : {
+    "default_icon" : {
+      "19" : "imgs/icon.png" }},
+  "background" : {
+    "page" : "background.html"},
   "content_scripts" : [{
       "matches" : ["http://*/*", "https://*/*"],
       "all_frames" : true,
-      "css" : ["block.css"],
-      "js" : ["global.js", "rules.js"]}],
+      "css" : ["block.css", "page.css"],
+      "js" : ["global.js", "page.js"]}],
   "manifest_version" : 2,
   "description" : "Block share with social media icons.",
   "name" : "ShareBlock",
   "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
   "version" : "0.1",
-  "web_accessible_resources": ["block.css"]
+  "content_security_policy" : 
+    "script-src 'self' https://connect.facebook.net; object-src 'self'",
+  "web_accessible_resources": 
+    ["block.css", "popup.js", "popup.html", "popup.css",
+     "https://connect.facebook.net/en_US/sdk.js"]
 }

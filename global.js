@@ -175,6 +175,17 @@ function set_styles(el, styles) {
     return el; }
 
 
+function set_attributes(el, attrs) {
+    for (var key in attrs) 
+        el.setAttribute(key, attrs[key]);
+    return el; }
+
+function set_styles(el, attrs) {
+    for (var key in attrs) 
+        el.style[key] = attrs[key];
+
+    return el; }
+
 function add_style(css) {
   var head = document.getElementsByTagName('head')[0];
   if (!head) 
