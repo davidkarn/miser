@@ -28,11 +28,34 @@ define_widget('facebook', function(url) {
         + url + '" data-layout="box_count" data-action="like" '
         + 'data-show-faces="true" data-share="false"></div>'; });
 
+define_widget('twitter', function(url, title) {
+    return '<iframe scrolling="no" frameborder="0" allowtransparency="true" '
+    + 'src="https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;'
+    + 'count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;'
+    + 'original_referer=' + url + '&amp;size=m&amp;text=' + title + '&amp;'
+    + 'url=' + url + '" class="twitter-share-button twitter-count-vertical" '
+    + 'style="width: 55px; height: 62px;" title="Twitter Tweet Button"></iframe>'; });
+
+define_widget('google_plus', function(url, title) {
+    return '<iframe width="100%" scrolling="no" frameborder="0" title="+1" vspace="0" '
+        + 'tabindex="-1" style="position: static; left: 0pt; top: 0pt; width: 60px; '
+        + 'margin: 0px; border-style: none; visibility: visible; height: 60px;" '
+        + 'src="https://plusone.google.com/_/+1/fastbutton?url=' + url + '&amp;size=tall'
+        + '&amp;count=true&amp;hl=en-US&amp;jsh=m%3B%2F_%2Fapps-static%2F_%2Fjs%2Fgapi'
+        + '%2F__features__%2Frt%3Dj%2Fver%3Dt1NEBxIt2Qs.es_419.%2Fsv%3D1%2Fam'
+        + '%3D!Xq7AzNfn9_-I0e5PyA%2Fd%3D1%2F#id=I1_1328906079806&amp;parent='
+        + url + '&amp;rpctoken=615138222&amp;_methods=onPlusOne%2C_ready%2C_close%2C'
+        + '_open%2C_resizeMe%2C_renderstart" name="I1_1328906079806" marginwidth="0"'
+        + 'marginheight="0" id="I1_1328906079806" hspace="0" allowtransparency="true">'
+        + '</iframe>'; });
+
 function create_widgets() {
     var html = '';
+    var title = (document.body.querySelector('title'));
+    title = (title && title.innerHTML) || '';
     for (var i in widgets)
         html += ('<div class="widget">'
-                 + widgets[i](window.location.href)
+                 + widgets[i](window.location.href, title)
                  + '</div>');
     return html; }
 

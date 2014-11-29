@@ -6,6 +6,7 @@
     "page" : "background.html"},
   "content_scripts" : [{
       "matches" : ["http://*/*", "https://*/*"],
+      "exclude_matches" : ["*://*.twitter.com/*"],
       "all_frames" : true,
       "css" : ["block.css", "page.css"],
       "js" : ["global.js", "page.js"]}],
