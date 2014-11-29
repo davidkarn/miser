@@ -9,6 +9,17 @@ function remove_element(element) {
     if (element && element.parentNode)
         return element.parentNode.removeChild(element); }
 
+function addGlobalStyle(doc, css) {
+  var head = doc.getElementsByTagName('head')[0] || document.body;
+  var style = doc.createElement('style'); 
+  style.type = 'text/css';
+  if (style.styleSheet) 
+    style.styleSheet.cssText = css; 
+  else 
+    style.appendChild(document.createTextNode(css)); 
+
+  head.appendChild(style); }
+
 function get_option(key) {
     if (key == 'authurl')
         return global_authurl;

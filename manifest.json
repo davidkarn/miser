@@ -1,11 +1,13 @@
 {
   "content_scripts" : [{
       "matches" : ["http://*/*", "https://*/*"],
+      "all_frames" : true,
+      "css" : ["block.css"],
       "js" : ["global.js", "rules.js"]}],
   "manifest_version" : 2,
   "description" : "Block share with social media icons.",
   "name" : "ShareBlock",
   "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
   "version" : "0.1",
-  "web_accessible_resources": []
+  "web_accessible_resources": ["block.css"]
 }
