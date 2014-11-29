@@ -176,5 +176,7 @@ background: linear-gradient(to bottom, #fff, #eee)!important;
 display:inline-block!important;
 }
 
-#share_block_popup div.widget iframe, #share_block_popup div.widget div.fb-like {
+#share_block_popup div.widget iframe, 
+#share_block_popup div.widget div.fb-like,
+#share_block_popup div.widget span.IN-widget {
     display: block!important; }

@@ -12,7 +12,7 @@ var widgets = {};
 function define_widget(name, initializer) {
     widgets[name] = initializer; }
 
-define_widget('facebook', function(url) {
+define_widget('facebook', function(div, url) {
     var html = '';
     if (sel('div#fb-root'))
         html = '<div id="fb-root"></div>'
@@ -28,7 +28,7 @@ define_widget('facebook', function(url) {
         + url + '" data-layout="box_count" data-action="like" '
         + 'data-show-faces="true" data-share="false"></div>'; });
 
-define_widget('twitter', function(url, title) {
+define_widget('twitter', function(div, url, title) {
     return '<iframe scrolling="no" frameborder="0" allowtransparency="true" '
     + 'src="https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;'
     + 'count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;'
@@ -36,7 +36,7 @@ define_widget('twitter', function(url, title) {
     + 'url=' + url + '" class="twitter-share-button twitter-count-vertical" '
     + 'style="width: 55px; height: 62px;" title="Twitter Tweet Button"></iframe>'; });
 
-define_widget('google_plus', function(url, title) {
+define_widget('google_plus', function(div, url, title) {
     return '<iframe width="100%" scrolling="no" frameborder="0" title="+1" vspace="0" '
         + 'tabindex="-1" style="position: static; left: 0pt; top: 0pt; width: 60px; '
         + 'margin: 0px; border-style: none; visibility: visible; height: 60px;" '
@@ -49,15 +49,39 @@ define_widget('google_plus', function(url, title) {
         + 'marginheight="0" id="I1_1328906079806" hspace="0" allowtransparency="true">'
         + '</iframe>'; });
 
-function create_widgets() {
+define_widget('linked_in', function(div, url, title) {
+    var script = document.createElement('script');
+    set_attributes(script, {
+        src:  '//platform.linkedin.com/in.js',
+        type: 'text/javascript'});
+    script.innerHTML = ' lang: en_US'; 
+    div.appendChild(script);
+
+    var script2 = document.createElement('script');
+    set_attributes(script2, {
+        type: 'IN/Share',
+        'data-counter': 'top'}); 
+    div.appendChild(script2);
+
+    return div; });
+
+function create_widgets(body) {
     var html = '';
     var title = (document.body.querySelector('title'));
     title = (title && title.innerHTML) || '';
-    for (var i in widgets)
-        html += ('<div class="widget">'
-                 + widgets[i](window.location.href, title)
-                 + '</div>');
-    return html; }
+
+    for (var i in widgets) {
+        var div = document.createElement('div');
+        div.className = 'widget';
+
+        html = widgets[i](div, window.location.href, title);
+        if (typeof html == "string")
+            div.innerHTML = html
+        else
+            div = html;
+
+        body.appendChild(div); }}
+
 
 function create_popup() {
     if (get_popup()) return;
@@ -75,9 +99,7 @@ function create_popup() {
         opacity:     '1',
         zIndex:       99999999});
     document.body.appendChild(popup); 
-
-    var html = create_widgets();
-    popup.innerHTML = html; }
+    create_widgets(popup); }
 
 /*    var popup = document.createElement('iframe');
     set_attributes(popup, {
