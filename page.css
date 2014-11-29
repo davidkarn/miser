@@ -159,6 +159,7 @@ div#share_block_popup {
     border-color: #222!important;
     box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3)!important;
     margin: 5px!important;
+    z-index: 999999999999!important;
     padding: 10px!important; }
 
 #share_block_popup div.widget {
@@ -167,7 +168,13 @@ div#share_block_popup {
     margin-right: 10px!important;
     margin-bottom: 10px!important;
     border: 1px solid #666!important;
+width: 56px!important;
+padding: 5px!important;
+height: 64px!important;
+border: 1px solid #bbb!important;
+background: linear-gradient(to bottom, #fff, #eee)!important;
+display:inline-block!important;
 }
 
-#share_block_popup div.widget iframe {
+#share_block_popup div.widget iframe, #share_block_popup div.widget div.fb-like {
     display: block!important; }

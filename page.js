@@ -8,6 +8,34 @@ function handle_message(msg) {
                                ? "none"
                                : "block"); }}
         
+var widgets = {};
+function define_widget(name, initializer) {
+    widgets[name] = initializer; }
+
+define_widget('facebook', function(url) {
+    var html = '';
+    if (sel('div#fb-root'))
+        html = '<div id="fb-root"></div>'
+        + '<script>(function(d, s, id) {'
+        + '    var js, fjs = d.getElementsByTagName(s)[0];'
+        + '    if (d.getElementById(id)) return;'
+        + '    js = d.createElement(s); js.id = id;'
+        + '    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=301023846773439&version=v2.0";'
+        + '    fjs.parentNode.insertBefore(js, fjs);'
+        + '}(document, "script", "facebook-jssdk"));</script>';
+
+    return html + '<div class="fb-like" data-href="' 
+        + url + '" data-layout="box_count" data-action="like" '
+        + 'data-show-faces="true" data-share="false"></div>'; });
+
+function create_widgets() {
+    var html = '';
+    for (var i in widgets)
+        html += ('<div class="widget">'
+                 + widgets[i](window.location.href)
+                 + '</div>');
+    return html; }
+
 function create_popup() {
     if (get_popup()) return;
 
@@ -25,13 +53,7 @@ function create_popup() {
         zIndex:       99999999});
     document.body.appendChild(popup); 
 
-    var html = function (){
-    /*start
-    <div class="widget">
-     <iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;layout=box_count&amp;appId=301023846773439" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
-    </div>
-    end*/
-    }.toString().replace("/*start",'').replace("end*/",'').slice(14,-1).trim();
+    var html = create_widgets();
     popup.innerHTML = html; }
 
 /*    var popup = document.createElement('iframe');

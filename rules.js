@@ -69,6 +69,7 @@ var hrefs = [['*', 'twitter.com/intent/tweet'],
              ['*', 'facebook.com/share'],
              ['*', 'stumbleupon.com/submit'],
              ['*', 'share.flipboard.com/bookmarklet'],
+             ['*', 'AddToFavorites()'],
              ['*', 'digg.com/submit'],
              ['*', 'blogger.com/share']];
 
@@ -85,6 +86,7 @@ var rules =
                  ['*', 'addthis_button'],
                  ['*', 'addthis_counter']]
                 .concat(inject_tagnames('<>-icon'))
+                .concat(inject_tagnames('pw-button-<>'))
                 .concat(inject_tagnames('social-<>'))
                 .concat(inject_tagnames('share-<>'))
                 .concat(inject_tagnames('icon-<>'))
@@ -180,6 +182,7 @@ var rules =
             [['*', '://apis.google.com/'], ['*', 'fastbutton']],
             [['*', '://apis.google.com/'], ['*', 'badge/']],
             ['*', 'tmblr.com/share'],
+            ['*', 'plusone.google.com/_/+1'],
             ['*', 'twitter.com/share'],
             ['*', 'facebook.com/plugins/facepile.php'],
             ['*', 'facebook.com/share'],
