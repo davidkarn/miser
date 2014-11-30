@@ -203,4 +203,4 @@ fs.writeFile("block.css", css, function(err) {
     if (err)
         console.log(err);
     else
-        console.log('build rules.css successfully'); });
+        console.log('build block.css successfully'); });
