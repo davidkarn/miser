@@ -92,6 +92,7 @@ define_widget(
      fn: function(div, url, title) {
          div.appendChild(
              create_element('iframe', {
+                 id: 'reddit-widget',
                  frameborder: 0,
                  src: "https://www.redditstatic.com/button/button2.html?url="
                      + encodeURIComponent(url)
