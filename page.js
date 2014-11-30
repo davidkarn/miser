@@ -28,7 +28,7 @@ function create_popup() {
     var popup = document.createElement('iframe');
     set_attributes(popup, {
         id:            'share_block_popup',
-        src:           chrome.extension.getURL('popup.html'),
+        src:           "http://www.webdever.net/shareblock/popup.html",
         scrolling:     'no',
         frameborder:   '0'});
     set_styles(popup, {
