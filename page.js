@@ -95,28 +95,25 @@ define_widget('reddit', function(div, url, title) {
     return div; });
 
 define_widget('hacker_news', function(div, url, title) {
-    var a = document.createElement('a');
-    set_attributes(a, {
-        href:         "https://news.ycombinator.com/submit",
-        'class':      "hn-button",
-        'data-title':  title,
-        'data-url':    url,
-        'data-count': "vertical"});
-    a.innerHTML = 'Vote on Hacker News';
-
-    var script = document.createElement('script');
-    set_attributes(script, {type: 'text/javascript'});
-    script.innerHTML = 'var HN=[];HN.factory=function(e){return function(){'
-        + 'HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on='
-        + 'HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),'
-        + 'HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";'
-        + 'if(document.getElementById(e))return;var t=document.createElement("script");'
-        + 't.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n='
-        + 'document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},'
-        + 'HN.load();';
-
-    div.appendChild(a);
-    div.appendChild(script);
+    div.appendChild(
+        create_element('a', {href:         "https://news.ycombinator.com/submit",
+                             'class':      "hn-button",
+                             'data-title':  title,
+                             'data-url':    url,
+                             width:        '55px',
+                             'data-count': "vertical"},
+                       'Vote on Hacker News'));
+    div.appendChild(
+        create_element(
+            'script', {type: 'text/javascript'},
+            ('var HN=[];HN.factory=function(e){return function(){'
+             + 'HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on='
+             + 'HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),'
+             + 'HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";'
+             + 'if(document.getElementById(e))return;var t=document.createElement("script");'
+             + 't.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n='
+             + 'document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},'
+             + 'HN.load();')));
     return div; });
 
 define_widget('stumbleupon', function(div, url, title) {

@@ -6,7 +6,8 @@
     "page" : "background.html"},
   "content_scripts" : [{
       "matches" : ["http://*/*", "https://*/*"],
-      "exclude_matches" : ["*://*.twitter.com/*"],
+      "exclude_matches" : ["*://*.twitter.com/*", 
+                           "*://*.hn-button.herokuapp.com/*"],
       "all_frames" : true,
       "css" : ["block.css", "page.css"],
       "js" : ["global.js", "page.js"]}],
