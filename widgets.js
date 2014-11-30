@@ -104,7 +104,7 @@ define_widget(
     {type: 'box',
      display: false,
      fn: function(div, url, title) {
-         div.appendChild(
+/*         div.appendChild(
              create_element('a', {href:         "https://news.ycombinator.com/submit",
                                   'class':      "hn-button",
                                   'data-title':  title,
@@ -122,7 +122,21 @@ define_widget(
                   + 'if(document.getElementById(e))return;var t=document.createElement("script");'
                   + 't.id=e,t.src="https://hn-button.herokuapp.com/hn-button.js";var n='
                   + 'document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},'
-                  + 'HN.load();')));
+                  + 'HN.load();')));*/
+         div.appendChild(
+             create_element('iframe', {
+                 src:           ("http://hn-button.herokuapp.com?title=" 
+                                 + title + "t&url=" + url + "&count=vertical"),
+                 name:          "hn-button-dyolxfj",
+                 id:            "hn-button-dyolxfj",
+                 "class":       "hn-button",
+                 'data-title':  title,
+                 'data-url':    url,
+                 'data-count':  "vertical",
+                 title:         "Hacker News Button",
+                 height:        "62",
+                 width:         "49",
+                 frameborder:   "0"}));
          return div; }});
 
 define_widget(
