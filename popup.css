@@ -1,0 +1,37 @@
+
+#share_block_popup div.share-block-widget {
+    margin-right: 10px!important;
+    margin-bottom: 10px!important;
+    min-width: 56px!important;
+    max-width: 80px!important;
+    padding: 5px!important;
+    min-height: 64px!important;
+    float:left!important;
+}
+#share_block_popup div#share-block-bar-widgets div.share-block-widget {
+    max-width: 300px!important;
+    width:auto!important; }
+
+#share_block_popup div#share-block-bar-widgets,
+#share_block_popup div#share-block-box-widgets {
+    clear: both;
+    width: 100%;
+}
+
+#share_block_popup div.share-block-widget iframe, 
+#share_block_popup div.share-block-widget div.fb-like,
+#share_block_popup div.share-block-widget a#share-block-tumblr,
+#share_block_popup div.share-block-widget span.IN-widget {
+    display: block!important; }
+
+
+div#share_block_popup {
+    width: 400px!important;
+    height: 200px!important;
+    background: white!important;
+    color: #444!important;
+    border-color: #222!important;
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3)!important;
+    margin: 5px!important;
+    z-index: 999999999999!important;
+    padding: 10px!important; }
