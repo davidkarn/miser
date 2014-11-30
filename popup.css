@@ -1,16 +1,33 @@
 
 #share_block_popup div.share-block-widget {
-    margin-right: 10px!important;
+    margin-right: 8px!important;
     margin-bottom: 10px!important;
-    min-width: 56px!important;
-    max-width: 80px!important;
+    min-width: 50px!important;
+    max-width: 50px!important;
     padding: 5px!important;
     min-height: 64px!important;
     max-height: 60px!important;
     float:left!important;
 }
+
+#share_block_popup div.share-block-widget a{
+font-family: helvetica, arial, sans-serif;
+color: #1155ff !important;
+font-weight: bold;
+font-size: 14px;
+text-decoration: none!important;
+}
+
+#share_block_popup div.share-block-widget a img {
+    top: 2.5px;
+margin-right: 5px;
+position: relative;
+margin-top: -2px;
+}
+
 #share_block_popup div#share-block-bar-widgets div.share-block-widget {
     max-width: 300px!important;
+    min-width: 30px !important;
     width:auto!important; }
 
 #share_block_popup div#share-block-bar-widgets,
@@ -23,7 +40,7 @@
 #share_block_popup div.share-block-widget iframe, 
 #share_block_popup div.share-block-widget div.fb-like,
 #share_block_popup div.share-block-widget a#share-block-tumblr,
-#share_block_popup div.share-block-widget iframe#reddit-widget,
+#share_block_popup div.share-block-widget iframex#reddit-widget,
 #share_block_popup div.share-block-widget span.IN-widget {
     display: block!important; }
 
