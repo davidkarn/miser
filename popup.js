@@ -21,9 +21,7 @@ function receiveMessage(event){
         create_widgets(boxes, widgets.filter(param_tester('type', 'box')), 
                        root_url, root_title);
         create_widgets(bars,  widgets.filter(param_tester('type', 'bar')),
-                       root_url, root_title);
-        popup.appendChild(boxes);
-        popup.appendChild(bars); }}
+                       root_url, root_title); }}
 
 
 window.addEventListener("message", receiveMessage, false);
