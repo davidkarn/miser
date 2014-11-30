@@ -137,21 +137,22 @@ define_widget('tumblr', function(div, url, title) {
     var tumblr_link_name        = title;
     var tumblr_link_description = title;
 
-    var tumblr_button = document.createElement("a");
-    tumblr_button.setAttribute("href", "http://www.tumblr.com/share/link?url=" 
-                               + encodeURIComponent(tumblr_link_url) + "&name=" 
-                               + encodeURIComponent(tumblr_link_name) + 
-                               "&description="
-                               + encodeURIComponent(tumblr_link_description));
-    tumblr_button.setAttribute("title", "Share on Tumblr");
-    tumblr_button.setAttribute("style", "display:inline-block; text-indent:-9999px; "
-                               + "overflow:hidden; width:81px; height:20px; "
-                               + "background:url"
-                               + "('https://platform.tumblr.com/v1/share_1.png')"
-                               + "top left no-repeat transparent;");
-    tumblr_button.innerHTML = "Share on Tumblr";
-
-    div.appendChild(tumblr_button);
+    div.appendChild(
+        create_element(
+            "a", 
+            {href: ("http://www.tumblr.com/share/link?url=" 
+                    + encodeURIComponent(tumblr_link_url) + "&name=" 
+                    + encodeURIComponent(tumblr_link_name) + 
+                    "&description="
+                    + encodeURIComponent(tumblr_link_description)),
+             id:  "share-block-tumblr",
+             title: "Share on Tumblr",
+             style: ("display:inline-block; text-indent:-9999px; "
+                     + "overflow:hidden; width:81px; height:20px; "
+                     + "background:url"
+                     + "('https://platform.tumblr.com/v1/share_1.png')"
+                     + "top left no-repeat transparent;")},
+            "Share on Tumblr"));
     return div; });
 
 define_widget('del.icio.us', function(div, url, title) {
@@ -167,8 +168,9 @@ define_widget('del.icio.us', function(div, url, title) {
                        {src: "https://delicious.com/img/logo.png",
                         height: "16",
                         width: "16",
-                        alt: "Delicious"},
-                       "Save this on Delicious"));
+                        alt: "Delicious"}));
+    a.appendChild(create_text("Save this on Delicious"));
+
     div.appendChild(a);
     return div; });
 
@@ -179,7 +181,7 @@ function create_widgets(body) {
 
     for (var i in widgets) {
         var div = document.createElement('div');
-        div.className = 'widget';
+        div.className = 'share-block-widget';
 
         html = widgets[i](div, window.location.href, title);
         if (typeof html == "string")

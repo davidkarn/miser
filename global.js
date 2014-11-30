@@ -219,3 +219,5 @@ function create_element(tag_name, attributes, inner_html) {
     tag.innerHTML = inner_html || ''; 
     return tag; }
         
+function create_text(text) {
+    return document.createTextNode(text); }
