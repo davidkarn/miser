@@ -16,6 +16,7 @@
   "description" : "Block share with social media icons.",
   "name" : "ShareBlock",
   "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
+  "options_page" : "options.html",
   "version" : "0.1",
   "content_security_policy" : 
     "script-src 'self' 'unsafe-eval' https://www.linkedin.com/countserv/count/share https://connect.facebook.net https://assets.pinterest.com/js/pinit_main.js https://connect.facebook.net/en_US/sdk.js https://assets.pinterest.com/js/pinit.js https://platform.linkedin.com/in.js https://www.redditstatic.com/button/button2.html https://platform.linkedin.com/js/secureAnonymousFramework; object-src 'self' 'unsafe-eval'",

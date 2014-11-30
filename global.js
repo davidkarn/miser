@@ -62,10 +62,6 @@ function to_array(what) {
 
     return ar; }
 
-function get_domain() {
-    var uname = get_option('username').split('@');
-    return uname[1] || ''; }
-
 function send_message_to_tabs(message, query) {
     run_on_tabs(function(tab) {
         chrome.tabs.sendMessage(tab.id, message); },
@@ -98,15 +94,6 @@ function tester(value) {
 function not_tester(value) {
     return function(v) {
         return v != value; }; }
-
-function makeCallId() {
-    return ((new Date()) - 1).toString() + "@" + get_domain(); }
-
-function setCallId(callId) {
-    set_option('callid', callId); }
-
-function getCallId() {
-    get_option('callId'); }
 
 function clone(i) {
     if (i instanceof Array)

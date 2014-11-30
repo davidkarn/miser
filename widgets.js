@@ -7,6 +7,7 @@ define_widget(
     'facebook', 
     {type: 'box',
      display: true,
+     label: "Facebook",
      fn: function(div, url) {
          var html = '';
          if (sel('div#fb-root'))
@@ -29,6 +30,7 @@ define_widget(
     'twitter', 
     {type: 'box',
      display: true,
+     label: "Twitter",
      fn: function(div, url, title) {
          return '<iframe scrolling="no" frameborder="0" allowtransparency="true" '
              + 'src="https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;'
@@ -41,6 +43,7 @@ define_widget(
     'google_plus', 
     {type: 'box',
      display: true,
+     label: "Google+",
      fn: function(div, url, title) {
          return '<iframe width="100%" scrolling="no" frameborder="0" title="+1" vspace="0" '
              + 'tabindex="-1" style="position: static; left: 0pt; top: 0pt; width: 60px; '
@@ -58,6 +61,7 @@ define_widget(
     'linked_in', 
     {type: 'box',
      display: true,
+     label: "LinkedIn",
      fn: function(div, url, title) {
          div.appendChild(
              create_element('script', 
@@ -74,6 +78,7 @@ define_widget(
     'pin_it', 
     {type: 'bar',
      display: true,
+     label: "Pinterest",
      fn: function(div, url, title) {
          div.appendChild(
              create_element(
@@ -89,6 +94,7 @@ define_widget(
     'reddit', 
     {type: 'box', 
      display: true,
+     label: "Reddit",
      fn: function(div, url, title) {
          div.appendChild(
              create_element('iframe', {
@@ -103,6 +109,7 @@ define_widget(
     'hacker_news', 
     {type: 'box',
      display: false,
+     label: "Hacker News",
      fn: function(div, url, title) {
 /*         div.appendChild(
              create_element('a', {href:         "https://news.ycombinator.com/submit",
@@ -143,6 +150,7 @@ define_widget(
     'stumbleupon', 
     {type: 'box',
      display: false,
+     label: "StumbleUpon",
      fn: function(div, url, title) {
          div.appendChild(
              create_element('su:badge', {layout: 5}));
@@ -163,6 +171,7 @@ define_widget(
     'tumblr', 
     {type: 'bar',
      display: true,
+     label: "Tumblr",
      fn: function(div, url, title) {
          var tumblr_link_url         = url;
          var tumblr_link_name        = title;
@@ -190,6 +199,7 @@ define_widget(
     'del.icio.us', 
     {type: 'bar',
      display: false,
+     label: "Delicious",
      fn: function(div, url, title) {
          var a = create_element('a', 
                                 {href: "#",

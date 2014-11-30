@@ -13,9 +13,9 @@ function handle_iframe_message(event){
     var command = message.command;
 
     if (command == 'init') {
-        var url = window.top.location.href;
+        var url   = window.top.location.href;
         var title = (document.body.querySelector('title'));
-        title = (title && title.innerHTML) || '';
+        title     = (title && title.innerHTML) || '';
 
         get_popup().contentWindow
             .postMessage({command:   'init',
@@ -37,8 +37,8 @@ function create_popup() {
         position:    'fixed',
         top:         '15px',
         right:       '30px',
-        width:       '450px',
-        height:      '250px',
+        width:       '500px',
+        height:      '300px',
         opacity:     '1',
         zIndex:       99999999});
     document.body.appendChild(popup);  }
