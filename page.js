@@ -86,11 +86,12 @@ define_widget('pin_it', function(div, url, title) {
     return div; });
 
 define_widget('reddit', function(div, url, title) {
-    var script = document.createElement('script');
-    set_attributes(script, {
-        src:  '//www.redditstatic.com/button/button2.js',
-        type: 'text/javascript'}); 
-    div.appendChild(script);
+    div.appendChild(
+        create_element('iframe', {
+            frameborder: 0,
+            src: "//www.redditstatic.com/button/button2.html?url="
+                + encodeURIComponent(url)
+                + '&title=' + encodeURIComponent(title)})); 
     return div; });
 
 define_widget('hacker_news', function(div, url, title) {

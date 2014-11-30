@@ -1,13 +1,10 @@
-var global_authurl = "http://simplicitii.net/includes/auth.php";
-var global_authurl = "http://webdever.net/simplii/simplicitii/includes/auth.php";
-
 function param_caller(param) {
     return function(o) {
         return o[param](); }; }
 
 function remove_element(element) {
     if (element && element.parentNode)
-        return element.parentNode.removeChild(element); }
+        element.parentNode.removeChild(element); }
 
 function addGlobalStyle(doc, css) {
   var head = doc.getElementsByTagName('head')[0] || document.body;
@@ -21,9 +18,6 @@ function addGlobalStyle(doc, css) {
   head.appendChild(style); }
 
 function get_option(key) {
-    if (key == 'authurl')
-        return global_authurl;
-
     return get_options()[key]; }
 
 function set_option(key, value) {
@@ -34,10 +28,7 @@ function set_option(key, value) {
 
 function get_options() {        
     if (!localStorage['settings'])
-        return {authurl: global_authurl,
-                username: '',
-                password: ''};
-
+        return {};
     return JSON.parse(localStorage['settings']); }
 
 function set_options(options) {
@@ -54,13 +45,13 @@ function curry(that) {
 	var newargs = to_array(arguments);
 	var j = 0;
 	for (var i in oldargs)
-	    if (oldargs[i] == undefined) {
+	    if (oldargs[i] === undefined) {
 		oldargs[i] = newargs[j];
 		j += 1; }
 
 	var as = oldargs.concat(newargs.slice(j));
 
-	return that.apply(that, as); }};
+	return that.apply(that, as); }; }
 
 function to_array(what) {
     var i; 
