@@ -7,6 +7,7 @@
   "content_scripts" : [{
       "matches" : ["http://*/*", "https://*/*"],
       "exclude_matches" : ["*://*.twitter.com/*", 
+                           "*://*.redditstatic.com/*",
                            "*://*.hn-button.herokuapp.com/*"],
       "all_frames" : true,
       "css" : ["block.css", "page.css"],
@@ -21,6 +22,7 @@
   "web_accessible_resources": 
     ["block.css", "popup.js", "popup.html", "popup.css",
      "https://www.linkedin.com/countserv/count/share",
+     "http://www.webdever.net/shareblock/popup.html",
      "https://connect.facebook.net",
      "https://connect.facebook.net/en_US/sdk.js",
      "https://assets.pinterest.com/js/pinit.js",
