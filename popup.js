@@ -10,7 +10,7 @@ var message_history = [];
 function receiveMessage(event){
     var msg = event.data || event;
     var command = msg.command;
-console.log(msg);
+
     if (command == 'init') {
         var root_url       = msg.root_url,
             root_title     = msg.root_title;
@@ -25,11 +25,10 @@ console.log(msg);
         popup.appendChild(boxes);
         popup.appendChild(bars); }}
 
-chrome.runtime.onMessage.addListener(receiveMessage);
+
 window.addEventListener("message", receiveMessage, false);
 
 function init() {
-    console.log('post_message');
     post_message({command: 'init'}); }
 
 if (member(["interactive", "complete"], document.readyState))
