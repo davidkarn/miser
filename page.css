@@ -171,6 +171,14 @@ div#share_block_popup {
     min-height: 64px!important;
     float:left!important;
 }
+#share_block_popup div#share-block-bar-widgets div.share-block-widget {
+    width:auto!important; }
+
+#share_block_popup div#share-block-bar-widgets,
+#share_block_popup div#share-block-box-widgets {
+    clear: both;
+    width: 100%;
+}
 
 #share_block_popup div.share-block-widget iframe, 
 #share_block_popup div.share-block-widget div.fb-like,
