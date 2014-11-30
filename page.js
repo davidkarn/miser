@@ -66,23 +66,19 @@ define_widget('linked_in', function(div, url, title) {
     return div; });
 
 define_widget('pin_it', function(div, url, title) {
-    var a = document.createElement('a');
-    set_attributes(a, {
-        href:              '//www.pinterest.com/pin/create/button/',
-        'data-pin-do':     'buttonBookmark',
-        'data-pin-shape':  "round",
-        'data-pin-height': "32"});
-    a.innerHTML = '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" />';
-
-    var script = document.createElement('script');
-    set_attributes(script, {
-        type:  "text/javascript",
-        async: '',
-        defer: '',
-        src:   '//assets.pinterest.com/js/pinit.js'});
-
-    div.appendChild(a);
-    div.appendChild(script);
+    div.appendChild(
+        create_element(
+            'a', {
+                href:              '//www.pinterest.com/pin/create/button/',
+                'data-pin-do':     'buttonBookmark',
+                'data-pin-color':  'red'},
+            '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" />'));
+    div.appendChild(
+        create_element('script', {
+            type:  "text/javascript",
+            async: '',
+            defer: '',
+            src:   '//assets.pinterest.com/js/pinit.js'}));
     return div; });
 
 define_widget('reddit', function(div, url, title) {
