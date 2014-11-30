@@ -65,6 +65,115 @@ define_widget('linked_in', function(div, url, title) {
 
     return div; });
 
+define_widget('pin_it', function(div, url, title) {
+    var a = document.createElement('a');
+    set_attributes(a, {
+        href:              '//www.pinterest.com/pin/create/button/',
+        'data-pin-do':     'buttonBookmark',
+        'data-pin-shape':  "round",
+        'data-pin-height': "32"});
+    a.innerHTML = '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" />';
+
+    var script = document.createElement('script');
+    set_attributes(script, {
+        type:  "text/javascript",
+        async: '',
+        defer: '',
+        src:   '//assets.pinterest.com/js/pinit.js'});
+
+    div.appendChild(a);
+    div.appendChild(script);
+    return div; });
+
+define_widget('reddit', function(div, url, title) {
+    var script = document.createElement('script');
+    set_attributes(script, {
+        src:  '//www.redditstatic.com/button/button2.js',
+        type: 'text/javascript'}); 
+    div.appendChild(script);
+    return div; });
+
+define_widget('hacker_news', function(div, url, title) {
+    var a = document.createElement('a');
+    set_attributes(a, {
+        href:         "https://news.ycombinator.com/submit",
+        'class':      "hn-button",
+        'data-title':  title,
+        'data-url':    url,
+        'data-count': "vertical"});
+    a.innerHTML = 'Vote on Hacker News';
+
+    var script = document.createElement('script');
+    set_attributes(script, {type: 'text/javascript'});
+    script.innerHTML = 'var HN=[];HN.factory=function(e){return function(){'
+        + 'HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on='
+        + 'HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),'
+        + 'HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";'
+        + 'if(document.getElementById(e))return;var t=document.createElement("script");'
+        + 't.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n='
+        + 'document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},'
+        + 'HN.load();';
+
+    div.appendChild(a);
+    div.appendChild(script);
+    return div; });
+
+define_widget('stumbleupon', function(div, url, title) {
+    div.appendChild(
+        create_element('su:badge', {layout: 5}));
+    div.appendChild(
+        create_element('script', {type: 'text/javascript'},
+                       '(function() {'
+                       + 'var li = document.createElement("script"); '
+                       + 'li.type = "text/javascript"; li.async = true; '
+                       + 'li.src = ("https:" == document.location.protocol ? '
+                       + '"https:" : "http:") + '
+                       + '"//platform.stumbleupon.com/1/widgets.js";'
+                       + 'var s = document.getElementsByTagName("script")[0]; '
+                       + 's.parentNode.insertBefore(li, s);'
+                       + '})();'));
+    return div; });
+
+define_widget('tumblr', function(div, url, title) {
+    var tumblr_link_url         = url;
+    var tumblr_link_name        = title;
+    var tumblr_link_description = title;
+
+    var tumblr_button = document.createElement("a");
+    tumblr_button.setAttribute("href", "http://www.tumblr.com/share/link?url=" 
+                               + encodeURIComponent(tumblr_link_url) + "&name=" 
+                               + encodeURIComponent(tumblr_link_name) + 
+                               "&description="
+                               + encodeURIComponent(tumblr_link_description));
+    tumblr_button.setAttribute("title", "Share on Tumblr");
+    tumblr_button.setAttribute("style", "display:inline-block; text-indent:-9999px; "
+                               + "overflow:hidden; width:81px; height:20px; "
+                               + "background:url"
+                               + "('https://platform.tumblr.com/v1/share_1.png')"
+                               + "top left no-repeat transparent;");
+    tumblr_button.innerHTML = "Share on Tumblr";
+
+    div.appendChild(tumblr_button);
+    return div; });
+
+define_widget('del.icio.us', function(div, url, title) {
+    var a = create_element('a', {href: "#",
+                                 onclick: "window.open('https://delicious.com/save?v=5"
+                                 + "&provider=ShareBlock&noui&jump=close&url='+"
+                                 + "encodeURIComponent(location.href)+'&title='+"
+                                 + "encodeURIComponent(document.title), "
+                                 + "'delicious','toolbar=no,width=550,height=550'); "
+                                 + "return false;"});
+    a.appendChild(
+        create_element('img', 
+                       {src: "https://delicious.com/img/logo.png",
+                        height: "16",
+                        width: "16",
+                        alt: "Delicious"},
+                       "Save this on Delicious"));
+    div.appendChild(a);
+    return div; });
+
 function create_widgets(body) {
     var html = '';
     var title = (document.body.querySelector('title'));

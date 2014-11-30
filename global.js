@@ -222,3 +222,9 @@ function get_bounds(el) {
 
     return offset; }
     
+function create_element(tag_name, attributes, inner_html) {
+    var tag = document.createElement(tag_name);
+    set_attributes(tag, attributes);
+    tag.innerHTML = inner_html || ''; 
+    return tag; }
+        

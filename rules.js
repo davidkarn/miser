@@ -156,7 +156,7 @@ var rules =
                 'article-social', 'share-controls', 'post-share-buttons', 'social_fix',
                 'social_txt', 'i-share', ['*', 'shareaholic'], ['*', 'quickshare'],
                 'sharedaddy', 'sd-content', 'shareStrip', 'socialLinksBot',
-                'yeniShare', 'ShareIt', 'ShareItTop',
+                'yeniShare', 'ShareIt', 'ShareItTop', 'share-area',
                 'shareFloat', 'shareNarrow', 'viralBadge', 'sharing-buttons',
                 ['*', 'at4-share'], 'addthis_native_toolbox', 'teaser__social',
                 'addthis_sharing_toolbox', 'share-btns', ['*', 'social-tools'], 
