@@ -13,15 +13,16 @@ function receiveMessage(event){
 
     if (command == 'init') {
         var root_url       = msg.root_url,
-            root_title     = msg.root_title;
+            root_title     = msg.root_title,
+            visibility     = msg.widgets;
     
         var popup = sel('#share_block_popup');
         var boxes = sel('#share-block-box-widgets');
         var bars  = sel('#share-block-bar-widgets');
         create_widgets(boxes, widgets.filter(param_tester('type', 'box')), 
-                       root_url, root_title);
+                       root_url, root_title, visibility);
         create_widgets(bars,  widgets.filter(param_tester('type', 'bar')),
-                       root_url, root_title); }}
+                       root_url, root_title, visibility); }}
 
 
 window.addEventListener("message", receiveMessage, false);

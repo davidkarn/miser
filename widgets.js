@@ -220,10 +220,14 @@ define_widget(
          div.appendChild(a);
          return div; }});
 
-function create_widgets(body, widgets, url, title) {
+function create_widgets(body, widgets, url, title, visibility) {
     var html = '';
 
     widgets.map(function(widget) {
+        if (!visibility[widget.name]) {
+            console.log('returning');
+            return; }
+
         var div = document.createElement('div');
         div.className = 'share-block-widget';
 
