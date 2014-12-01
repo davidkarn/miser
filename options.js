@@ -1,13 +1,3 @@
-function widget_enabled(widget) {
-    var option = get_option('widget_' + widget.name);
-    return (option === undefined)
-        ? widget.display
-        : option; }
-
-function set_widget_enabled(widget, enabled) {
-    return set_option('widget_' + widget.name,
-                      enabled); }
-
 function init() {
     var div = sel('#social-plugins');
     widgets.map(function(widget) {
