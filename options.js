@@ -1,5 +1,8 @@
 function widget_enabled(widget) {
-    return get_option('widget_' + widget.name); }
+    var option = get_option('widget_' + widget.name);
+    return (option === undefined)
+        ? widget.display
+        : option; }
 
 function set_widget_enabled(widget, enabled) {
     return set_option('widget_' + widget.name,
@@ -12,8 +15,12 @@ function init() {
         var label = widget.label; 
 
         var checkbox = create_element('input', {
-            type: 'checkbox',
-            id:    name + '_checkbox'});
+            type:    'checkbox',
+            id:       name + '_checkbox'});
+        if (widget_enabled(widget))
+            checkbox.checked = true;
+        checkbox.onchange = function() {
+            set_widget_enabled(widget, checkbox.checked); };
 
         var label_el = create_element('label', {
             for: name + '_checkbox'});

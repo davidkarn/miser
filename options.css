@@ -3,16 +3,29 @@ body {
     margin: 6em;
     background-color: #eee;
     color: #444;
-    line-height: 1.6; }
+    line-height: 1.6; 
+    text-align: center; }
+    
+h2 {
+    max-width: 53em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: left;
+    padding-left: 6em; }
 
 .options-group {
+    text-align: left;
     border: 1px solid #ccc;
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 2em;
     padding-top: 1em;
+    max-width: 70em;
     background-color: #f7f7f7;
-    margin: 1em;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
     width: calc(100% - 12em);
 }
 
