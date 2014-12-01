@@ -1,3 +1,4 @@
+var widget_visibility;
 function get_popup() {
     return sel('iframe#share_block_popup'); }
 
@@ -19,6 +20,7 @@ function handle_iframe_message(event){
 
         get_popup().contentWindow
             .postMessage({command:   'init',
+                          widgets:    widget_visibility,
                           root_url:   url,
                           root_title: title}, '*'); }}
 
@@ -43,10 +45,17 @@ function create_popup() {
         zIndex:       99999999});
     document.body.appendChild(popup);  }
 
+function post_message(msg, next) {
+    chrome.runtime.sendMessage(msg, next); }
+
 function init() {
     if (window === top) {
         //    window.addEventListener("message", receiveMessage, false);
-        create_popup();
+        post_message({command: 'init'}, 
+                     function(arg) {
+                         console.log(arg);
+                         widget_visibility = arg.widget_visibility; 
+                         create_popup(); });
         window.addEventListener("message", handle_iframe_message, false);
         chrome.runtime.onMessage.addListener(handle_message); }}
 
