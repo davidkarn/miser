@@ -225,7 +225,6 @@ function create_widgets(body, widgets, url, title, visibility) {
 
     widgets.map(function(widget) {
         if (!visibility[widget.name]) {
-            console.log('returning');
             return; }
 
         var div = document.createElement('div');

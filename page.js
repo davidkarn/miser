@@ -1,4 +1,4 @@
-var revert_block_style_link;
+var block_style_link;
 var widget_visibility;
 function get_popup() {
     return sel('iframe#share_block_popup'); }
@@ -60,17 +60,17 @@ function create_popup() {
         zIndex:       99999999});
     document.body.appendChild(popup);  }
 
-function revert_styles() {
-    revert_block_style_link = document.createElement('link');
-    revert_block_style_link.setAttribute('rel', 'stylesheet');
-    revert_block_style_link.setAttribute('href', get_url('revert-block.css'));
-
-    document.body.appendChild(revert_block_style_link); }
-
 function enable_styles() {
-    revert_block_style_link
+    block_style_link = document.createElement('link');
+    block_style_link.setAttribute('rel', 'stylesheet');
+    block_style_link.setAttribute('href', get_url('block.css'));
+
+    document.documentElement.appendChild(block_style_link); }
+
+function revert_styles() {
+    block_style_link
         .parentElement
-        .removeChild(revert_block_style_link); }
+        .removeChild(block_style_link); }
 
 function post_message(msg, next) {
     chrome.runtime.sendMessage(msg, next); }
@@ -80,7 +80,6 @@ function init() {
         //    window.addEventListener("message", receiveMessage, false);
         post_message({command: 'init'}, 
                      function(arg) {
-                         console.log(arg);
                          widget_visibility = arg.widget_visibility; 
                          create_popup(); });
         window.addEventListener("message", handle_iframe_message, false);
@@ -93,3 +92,4 @@ else
         if (document.readyState == "interactive") {
             init(); }};
 
+enable_styles();

@@ -12,7 +12,7 @@
                              "*://*.redditstatic.com/*",
                              "*://*.hn-button.herokuapp.com/*"],
         "all_frames" : true,
-        "css" : ["page.css"],
+        "run_at": "document_start",
         "js" : ["global.js", "widgets.js", "page.js"]}],
     "manifest_version" : 2,
     "description" : "Block share with social media icons.",

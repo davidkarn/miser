@@ -68,7 +68,6 @@ function send_message_to_tabs(message, query) {
                query); }
 
 function send_message_to_active_tab(message) {
-    console.log(['active_tab', message]);
     send_message_to_tabs(message, {active: true});
 
     var msg = clone(message);
@@ -76,11 +75,9 @@ function send_message_to_active_tab(message) {
     send_message_to_tabs(msg, {active: false}); }
 
 function run_on_tabs(fn, query) {
-    console.log(['run_on_tabs', query, (query || {})]);
     chrome.tabs.query(
         (query || {}), 
         function(tabs) {
-            console.log(['run_on_tabs_result', query, tabs]);
             tabs.map(fn); }); }
 
 function param_tester(key, value) {
