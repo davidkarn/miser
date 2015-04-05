@@ -28,7 +28,19 @@ function receiveMessage(event){
 window.addEventListener("message", receiveMessage, false);
 
 function init() {
-    post_message({command: 'init'}); }
+    post_message({command: 'init'});
+    sel('#settings').onclick = function() {
+	post_message({command: 'go-to-miser-settings'}); }; 
+    sel('#flag').onclick = function() {
+	post_message({command: 'miser-flag'}); }; 
+    sel('#disable').onclick = function() {
+	sel('#disable').style.display = 'none';
+	sel('#enable').style.display = 'block';
+	post_message({command: 'miser-disable'}); };
+    sel('#enable').onclick = function() {
+	sel('#disable').style.display = 'block';
+	sel('#enable').style.display = 'none';
+	post_message({command: 'miser-enable'}); }; }
 
 if (member(["interactive", "complete"], document.readyState))
     init(); 
