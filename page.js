@@ -30,7 +30,7 @@ function create_popup() {
     var popup = document.createElement('iframe');
     set_attributes(popup, {
         id:            'share_block_popup',
-        src:           "http://www.webdever.net/shareblock/popup.html",
+        src:           "https://davidkarn.github.io/miser/popup.html",
         scrolling:     'no',
         frameborder:   '0'});
     set_styles(popup, {
@@ -39,7 +39,7 @@ function create_popup() {
         position:    'fixed',
         top:         '15px',
         right:       '30px',
-        width:       '500px',
+        width:       '350px',
         height:      '300px',
         opacity:     '1',
         zIndex:       99999999});

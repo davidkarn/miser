@@ -1,26 +1,28 @@
 {
-  "browser_action" : {
-    "default_icon" : {
-      "19" : "imgs/icon.png" }},
-  "background" : {
-    "page" : "background.html"},
-  "content_scripts" : [{
-      "matches" : ["http://*/*", "https://*/*"],
-      "exclude_matches" : ["*://*.twitter.com/*", 
-                           "*://*.redditstatic.com/*",
-                           "*://*.hn-button.herokuapp.com/*"],
-      "all_frames" : true,
-      "css" : ["block.css", "page.css"],
-      "js" : ["global.js", "widgets.js", "page.js"]}],
-  "manifest_version" : 2,
-  "description" : "Block share with social media icons.",
-  "name" : "ShareBlock",
-  "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
-  "options_page" : "options.html",
-  "version" : "0.1",
-  "content_security_policy" : 
+    "browser_action" : {
+        "default_icon" : {
+            "128" : "imgs/icon.png" }},
+    "icons" : {
+        "128" : "imgs/icon.png" },
+    "background" : {
+        "page" : "background.html"},
+    "content_scripts" : [{
+        "matches" : ["http://*/*", "https://*/*"],
+        "exclude_matches" : ["*://*.twitter.com/*", 
+                             "*://*.redditstatic.com/*",
+                             "*://*.hn-button.herokuapp.com/*"],
+        "all_frames" : true,
+        "css" : ["block.css", "page.css"],
+        "js" : ["global.js", "widgets.js", "page.js"]}],
+    "manifest_version" : 2,
+    "description" : "Block share with social media icons.",
+    "name" : "Miser",
+    "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
+    "options_page" : "options.html",
+    "version" : "0.1",
+    "content_security_policy" : 
     "default-src 'self' http://*.webdever.net 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self' 'unsafe-eval'",
-  "web_accessible_resources": 
+    "web_accessible_resources": 
     ["block.css", "popup.js", "popup.html", "popup.css",
-     "http://www.webdever.net/shareblock/popup.html"]
+     "https://davidkarn.github.io/miser/popup.html"]
 }
