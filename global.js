@@ -209,6 +209,24 @@ function create_element(tag_name, attributes, inner_html) {
 function create_text(text) {
     return document.createTextNode(text); }
 
+function disabled_urls() {
+    return get_option('disabled_urls') || []; }
+
+function set_disabled_urls(to) {
+    return set_option('disabled_urls', to); }
+
+function add_disabled_url(url) {
+    var urls = disabled_urls();
+    urls.push(url);
+    set_disabled_urls(urls); }
+
+function remove_disabled_url(url) {
+    var urls  = disabled_urls();
+    urls      = urls.filter(function(u) {
+        return u != url; });
+
+    set_disabled_urls(urls); }
+
 function widget_enabled(widget) {
     var option = get_option('widget_' + widget.name);
     return (option === undefined)

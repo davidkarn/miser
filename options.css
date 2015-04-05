@@ -46,3 +46,23 @@ label:hover {
     background-color: white; }
 label input {
     margin-right: 0.5em; }
+
+.disabled-box input {
+    width:75%;
+    padding : 0.5em; }
+
+.disabled-box button {
+    margin-left: 1em;
+    padding : 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em; }
+
+.disabled-box label {
+    margin-top: 0.5em;
+    width: calc(100% - 2em); }
+    
+a.remove {
+    cursor:pointer;
+    margin-left: 1em;
+    font-weight: bold;
+    float:right; }
