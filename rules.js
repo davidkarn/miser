@@ -195,12 +195,19 @@ var rules =
             ['*', 'facebook.com/plugins/share_button'],
             ['*', 'facebook.com/plugins/like']]}];
 
-var processed = process_rules(rules);
-var selector = processed.join(", ");
-var css = selector + '{display:none !important;}';
+var processed   = process_rules(rules);
+var selector    = processed.join(", ");
+var css         = selector + '{display:none !important;}';
+var revert_css  = selector + '{display:block !important;}';
 
 fs.writeFile("block.css", css, function(err) {
     if (err)
         console.log(err);
     else
         console.log('build block.css successfully'); });
+
+fs.writeFile("revert-block.css", revert_css, function(err) {
+    if (err)
+        console.log(err);
+    else
+        console.log('build revert-block.css successfully'); });

@@ -1,3 +1,4 @@
+var revert_block_style_link;
 var widget_visibility;
 function get_popup() {
     return sel('iframe#share_block_popup'); }
@@ -45,6 +46,17 @@ function create_popup() {
         zIndex:       99999999});
     document.body.appendChild(popup);  }
 
+function revert_styles() {
+    revert_block_style_link = document.createElement('link');
+    revert_block_style_link.setAttribute('rel', 'stylesheet');
+    revert_block_style_link.setAttribute('href',
+                                         chrome.extension.getURL('revert-block.css'));
+
+    document.body.appendChild(revert_block_style_link); }
+
+function enable_styles() {
+    revert_block_style_link.parentElement.removeChild(revert_block_style_link); }
+
 function post_message(msg, next) {
     chrome.runtime.sendMessage(msg, next); }
 
@@ -65,3 +77,4 @@ else
     document.onreadystatechange = function () {
         if (document.readyState == "interactive") {
             init(); }};
+
