@@ -24,5 +24,6 @@
     "default-src 'self' http://*.webdever.net 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self' 'unsafe-eval'",
     "web_accessible_resources": 
     ["block.css", "popup.js", "popup.html", "popup.css",
+     "http://miser.webdever.net/popup.html",
      "https://davidkarn.github.io/miser/popup.html"]
 }

@@ -14,6 +14,9 @@ function handle_iframe_message(event){
     var message = event.data;
     var command = message.command;
 
+    if (command == 'go-to-miser-settings')
+        post_message(message);
+
     if (command == 'init') {
         var url   = window.top.location.href;
         var title = (document.body.querySelector('title'));
@@ -31,7 +34,8 @@ function create_popup() {
     var popup = document.createElement('iframe');
     set_attributes(popup, {
         id:            'share_block_popup',
-        src:           "https://davidkarn.github.io/miser/popup.html",
+//        src:           "https://davidkarn.github.io/miser/popup.html",
+        src:           "http://miser.webdever.net/popup.html",
         scrolling:     'no',
         frameborder:   '0'});
     set_styles(popup, {
@@ -49,13 +53,14 @@ function create_popup() {
 function revert_styles() {
     revert_block_style_link = document.createElement('link');
     revert_block_style_link.setAttribute('rel', 'stylesheet');
-    revert_block_style_link.setAttribute('href',
-                                         chrome.extension.getURL('revert-block.css'));
+    revert_block_style_link.setAttribute('href', get_url('revert-block.css'));
 
     document.body.appendChild(revert_block_style_link); }
 
 function enable_styles() {
-    revert_block_style_link.parentElement.removeChild(revert_block_style_link); }
+    revert_block_style_link
+        .parentElement
+        .removeChild(revert_block_style_link); }
 
 function post_message(msg, next) {
     chrome.runtime.sendMessage(msg, next); }

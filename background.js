@@ -5,8 +5,9 @@ function get_widget_visibility() {
     return visibility; }
 
 function handle_message(message, sender, next) {
-    console.log(message);
-    console.log(next);
+    if (message.command == 'go-to-miser-settings')
+        chrome.tabs.create({url: get_url('options.html')});
+    
     if (message.command == 'init') {
         next({widget_visibility: get_widget_visibility()}); }}
 

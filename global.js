@@ -219,3 +219,5 @@ function set_widget_enabled(widget, enabled) {
     return set_option('widget_' + widget.name,
                       enabled); }
 
+function get_url(url) {
+    return chrome.extension.getURL(url); }
