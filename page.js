@@ -17,6 +17,16 @@ function handle_iframe_message(event){
     if (command == 'go-to-miser-settings')
         post_message(message);
 
+    if (command == 'miser-disable') {
+        revert_styles();
+        message.url = window.location.href;
+        post_message(message); }
+
+    if (command == 'miser-enable') {
+        enable_styles();
+        message.url = window.location.href;
+        post_message(message); }
+
     if (command == 'init') {
         var url   = window.top.location.href;
         var title = (document.body.querySelector('title'));

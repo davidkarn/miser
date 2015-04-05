@@ -5,6 +5,12 @@ function get_widget_visibility() {
     return visibility; }
 
 function handle_message(message, sender, next) {
+    if (message.command == 'miser-enable')
+        remove_disabled_url(message.url);
+
+    if (message.command == 'miser-disable')
+        add_disabled_url(message.url);
+    
     if (message.command == 'go-to-miser-settings')
         chrome.tabs.create({url: get_url('options.html')});
     
