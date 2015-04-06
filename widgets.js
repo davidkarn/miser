@@ -215,7 +215,7 @@ define_widget(
                              height: "16",
                              width: "16",
                              alt: "Delicious"}));
-         a.appendChild(create_text("Save this on Delicious"));
+         a.appendChild(create_text("Delicious"));
 
          div.appendChild(a);
          return div; }});
