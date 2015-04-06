@@ -9,8 +9,8 @@ function receiveMessage(event) {
     if (cmd == 'init_popup') {
         msg.command = 'init';
         sel('iframe').contentWindow.postMessage(msg, '*'); }
-    else
-        post_message(msg); }
+    else {
+        post_message(msg); }}
 
 window.addEventListener("message", receiveMessage, false);
 

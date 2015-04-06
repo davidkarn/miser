@@ -57,7 +57,7 @@ function create_popup() {
         width:       '365px',
         height:      '300px',
         opacity:     '1',
-        zIndex:       99999999});
+        zIndex:       99999999999999});
     document.body.appendChild(popup); }
 
 function enable_styles() {
