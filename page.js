@@ -54,7 +54,7 @@ function create_popup() {
         position:    'fixed',
         top:         '15px',
         right:       '30px',
-        width:       '400px',
+        width:       '365px',
         height:      '300px',
         opacity:     '1',
         zIndex:       99999999});
