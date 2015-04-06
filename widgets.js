@@ -132,7 +132,7 @@ define_widget(
                   + 'HN.load();')));*/
          div.appendChild(
              create_element('iframe', {
-                 src:           ("http://hn-button.herokuapp.com?title=" 
+                 src:           ("https://hn-button.herokuapp.com?title=" 
                                  + title + "t&url=" + url + "&count=vertical"),
                  name:          "hn-button-dyolxfj",
                  id:            "hn-button-dyolxfj",
@@ -160,7 +160,7 @@ define_widget(
                             + 'var li = document.createElement("script"); '
                             + 'li.type = "text/javascript"; li.async = true; '
                             + 'li.src = ("https:" == document.location.protocol ? '
-                            + '"https:" : "http:") + '
+                            + '"https:" : "https:") + '
                             + '"//platform.stumbleupon.com/1/widgets.js";'
                             + 'var s = document.getElementsByTagName("script")[0]; '
                             + 's.parentNode.insertBefore(li, s);'
@@ -180,7 +180,7 @@ define_widget(
          div.appendChild(
              create_element(
                  "a", 
-                 {href: ("http://www.tumblr.com/share/link?url=" 
+                 {href: ("https://www.tumblr.com/share/link?url=" 
                          + encodeURIComponent(tumblr_link_url) + "&name=" 
                          + encodeURIComponent(tumblr_link_name) + 
                          "&description="
