@@ -89,6 +89,7 @@ var rules =
                 .concat(inject_tagnames('pw-button-<>'))
                 .concat(inject_tagnames('social-<>'))
                 .concat(inject_tagnames('share-<>'))
+                .concat(inject_tagnames('<>Share'))
                 .concat(inject_tagnames('icon-<>'))
                 .concat(inject_tagnames('metro-<>')))},
      {tag: 'a',
@@ -140,14 +141,15 @@ var rules =
      {tag: ['span', 'div'],
       "data-role": [['*', 'socialshare_']]},
      {tag: 'li',
-      "class": ['share-btn', 'share-button']},
+      "class": ['share-btn', 'share-button', 'Shares']},
      {tag: ['ul', 'nav'],
-      "class": ['social', 'share-links', 'sharebar', 'share', 
-                'share-tools', 'social-icons',
+      "class": ['social', 'share-links', 'sharebar', 'share', 'SM_Icons',
+                'share-tools', 'social-icons', 'sharing-tools',
                 'share-links', 'entry_sharing']},
      {tag: 'div',
       "class": [['*', 'share-button'], 'metro-social', 'share24', 'social', 
-                ['*', 'sharrre'], ['*', 'socialShare'], 'sharingIcons',
+                ['*', 'sharrre'], ['*', 'socialShare'], 'sharingIcons', ['*', 'SocialMedia'],
+                'pinterest-pinit', 'socialite-instance', 'socialite',
                 'social-button-small', ['*', 'social-button'], 'social-bar',
                 'social-share', 'sharing_toolbox', ['*', 'social_sharebar'], 
                 'sharetools', 'social_buttons', ['*', 'social-likes'], 'social-box',
