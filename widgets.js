@@ -116,7 +116,7 @@ define_widget(
                                   'class':      "hn-button",
                                   'data-title':  title,
                                   'data-url':    url,
-                                  width:        '55px',
+                                  width:        '70px',
                                   'data-count': "vertical"},
                             'Vote on Hacker News'));
          div.appendChild(
@@ -146,6 +146,7 @@ define_widget(
                  frameborder:   "0"}));
          return div; }});
 
+/*
 define_widget(
     'stumbleupon', 
     {type: 'box',
@@ -166,6 +167,10 @@ define_widget(
                             + 's.parentNode.insertBefore(li, s);'
                             + '})();'));
          return div; }});
+
+
+Getting insecure content error with this widget
+*/
 
 define_widget(
     'tumblr', 
