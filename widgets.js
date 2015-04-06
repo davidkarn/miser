@@ -116,7 +116,7 @@ define_widget(
                                   'class':      "hn-button",
                                   'data-title':  title,
                                   'data-url':    url,
-                                  width:        '70px',
+                                  width:        '55px',
                                   'data-count': "vertical"},
                             'Vote on Hacker News'));
          div.appendChild(
