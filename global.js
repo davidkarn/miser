@@ -68,11 +68,7 @@ function send_message_to_tabs(message, query) {
                query); }
 
 function send_message_to_active_tab(message) {
-    send_message_to_tabs(message, {active: true});
-
-    var msg = clone(message);
-    msg.enqueue = true;
-    send_message_to_tabs(msg, {active: false}); }
+    send_message_to_tabs(message, {active: true}); }
 
 function run_on_tabs(fn, query) {
     chrome.tabs.query(
