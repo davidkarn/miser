@@ -33,7 +33,7 @@ function handle_iframe_message(event){
         title     = (title && title.innerHTML) || '';
 
         get_popup().contentWindow
-            .postMessage({command:   'init',
+            .postMessage({command:   'init_popup',
                           widgets:    widget_visibility,
                           root_url:   url,
                           root_title: title}, '*'); }}
@@ -44,8 +44,8 @@ function create_popup() {
     var popup = document.createElement('iframe');
     set_attributes(popup, {
         id:            'share_block_popup',
-//        src:           "https://davidkarn.github.io/miser/popup.html",
-        src:           "http://miser.webdever.net/popup.html",
+        //        src:            'https://davidkarn.github.io/miser/popup.html',
+        src:            get_url('iframe.html'),
         scrolling:     'no',
         frameborder:   '0'});
     set_styles(popup, {
@@ -58,7 +58,7 @@ function create_popup() {
         height:      '300px',
         opacity:     '1',
         zIndex:       99999999});
-    document.body.appendChild(popup);  }
+    document.body.appendChild(popup); }
 
 function enable_styles() {
     block_style_link = document.createElement('link');

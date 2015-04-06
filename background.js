@@ -20,6 +20,6 @@ function handle_message(message, sender, next) {
 chrome.runtime.onMessage.addListener(handle_message);
 chrome.browserAction.onClicked.addListener(
     function() {
-        send_message_to_tabs({command: 'toggle_popup'}); });
+        send_message_to_active_tab({command: 'toggle_popup'}); });
                               
 
