@@ -31,6 +31,8 @@ function init() {
     post_message({command: 'init'});
     sel('#settings').onclick = function() {
 	post_message({command: 'go-to-miser-settings'}); }; 
+    sel('#flag').onclick = function() {
+	post_message({command: 'miser-report-issue'}); }; 
     sel('#disable').onclick = function() {
 	sel('#disable').style.display = 'none';
 	sel('#enable').style.display = 'block';
