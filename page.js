@@ -27,6 +27,14 @@ function handle_iframe_message(event){
         message.url = window.location.href;
         post_message(message); }
 
+    if (command == 'miser-report-issue')
+        http('POST',
+             'http://webdever.net/miser/report.php',
+             {url: window.location.href},
+             do_nothing,
+             function() {
+                 console.log('error reporting to miser')});
+
     if (command == 'init') {
         var url   = window.top.location.href;
         var title = (document.body.querySelector('title'));

@@ -232,3 +232,10 @@ function set_widget_enabled(widget, enabled) {
 
 function get_url(url) {
     return chrome.extension.getURL(url); }
+
+function obj_to_urlstring(obj) {
+    var strs = [];
+    for (var key in obj)
+        strs.push(key + "=" + encodeURIComponent(obj[key]));
+    return strs.join("&"); }
+
