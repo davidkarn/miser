@@ -3,7 +3,7 @@ eval(fs.readFileSync(__dirname + '/global.js')+'');
 
 // href match data-href also
 var social_tagnames = ['facebook', 'twitter', 'google+', 'google-plus', 'email',
-                       'googleplus', 'linkedin', 'stumbleupon', 'delicious', 'google',
+                       'googleplus', 'linkedin', 'stumbleupon', 'delicious', 'google', 'googleshare',
                        'friendfeed', 'digg', 'reddit', 'pinterest', 'tumblr', 
                        'youtube', 'rss', 'pinterest', 'instagram', 'digg', 'print'];
 
@@ -19,25 +19,34 @@ function get_keys(obj) {
     return kys; }
 
 function process_rules(rules) {
-    return rules.map(function(rule) {
-        var keys = get_keys(rule)
-            .filter(not_tester('tag'));
-        var key = keys[0];
-        var values = rule[key];
-
-        var tags = rule['tag'];
-        if (!(tags instanceof Array))
-            tags = [tags];
-        return tags.map(function(tag) {
-            return values.map(curry(build_selector, tag, key)); })
-            .reduce(concat); })
-        .reduce(concat); }
+    return rules.map(
+        function(rule) {
+            var keys = get_keys(rule)
+                    .filter(not_tester('tag'));
+            var key = keys[0];
+            var values = rule[key];
+            
+            var tags = rule['tag'];
+            if (!(tags instanceof Array))
+                tags = [tags];
+        
+            return tags.map(function(tag) {
+                return values.map(curry(build_selector, tag, key)); })
+                .reduce(concat); }); }
+//        .reduce(concat); }
 
 function build_selector(tag, attribute, value) {
     return tag + build_attr(attribute, value); }
 
+function valid_css_name(value) {
+    return !(value instanceof Array) && value.match(/^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$/); }
+
 function build_attr(attribute, value) {
-    if (value == true)
+    if (attribute == 'class' && valid_css_name(value))
+        return '.' + value;
+    else if (attribute == 'id' && valid_css_name(value))
+        return '#' + value;
+    else if (value == true)
         return '[' + attribute + ']';
     else {
         var val_part = '';
@@ -115,35 +124,29 @@ var rules =
       "class": ['sharedaddy', 'fb-share-button', 'fb_iframe_widget',
                 'post-share-buttons', 'addthis_toolbox', 'addthis_default_style']},
      {tag: ['img', 'a', 'div'],
-      alt: ([[['^', 'Follow'], ['~', 'on']],
-            [['^', 'Like'], ['~', 'on']],
-            [['^', 'Subscribe'], ['~', 'on']],
-            [['^', 'Share'], ['~', 'on']]]
+      alt: ([]
             .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Follow'], ['~', tag]]; }))
+                  return [['~', 'Follow'], ['~', tag]]; }))
             .concat(social_tagnames.map(function(tag) {
-                return [['^', 'Like'], ['~', tag]]; }))
+                return [['~', 'Like'], ['~', tag]]; }))
             .concat(social_tagnames.map(function(tag) {
-                return [['^', 'Subscribe'], ['~', tag]]; }))
+                return [['~', 'Subscribe'], ['~', tag]]; }))
             .concat(social_tagnames.map(function(tag) {
-                return [['^', 'Share'], ['~', tag]]; }))
+                return [['~', 'Share'], ['~', tag]]; }))
             .concat(social_tagnames.map(function(tag) {
-                return [['^', 'Tweet'], ['~', tag]]; })))},
+                return [['~', 'Tweet'], ['~', tag]]; })))},
      {tag: ['img', 'a', 'div'],
-      title: ([[['^', 'Follow'], ['~', 'on']],
-               [['^', 'Like'], ['~', 'on']],
-               [['^', 'Subscribe'], ['~', 'on']],
-               [['^', 'Share'], ['~', 'on']]]
+      title: ([]
               .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Follow'], ['~', tag]]; }))
+                  return [['~', 'Follow'], ['~', tag]]; }))
               .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Like'], ['~', tag]]; }))
+                  return [['~', 'Like'], ['~', tag]]; }))
               .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Subscribe'], ['~', tag]]; }))
+                  return [['~', 'Subscribe'], ['~', tag]]; }))
               .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Share'], ['~', tag]]; }))
+                  return [['~', 'Share'], ['~', tag]]; }))
               .concat(social_tagnames.map(function(tag) {
-                  return [['^', 'Tweet'], ['~', tag]]; })))},
+                  return [['~', 'Tweet'], ['~', tag]]; })))},
      {tag: ['span', 'div'],
       "data-role": [['*', 'socialshare_']]},
      {tag: 'li',
@@ -167,7 +170,7 @@ var rules =
                 'social_txt', 'i-share', ['*', 'shareaholic'], ['*', 'quickshare'],
                 'sharedaddy', 'sd-content', 'shareStrip', 'socialLinksBot', 'post_share',
                 'yeniShare', 'ShareIt', 'ShareItTop', 'share-area', 'share-item',
-                ['^', 'sharing-palette'], ['^', 'store-share'], 'share-icon',
+                ['^', 'sharing-palette'], ['^', 'store-share'], 'share-icon', 'shareToolsWrapper', 
                 'share-text', ['^', 'addtoany'], ['^', 'a2a_'], 'ShareCount',
                 'ShareEntry', 'social-links', 'sm4_share', 'sm4ShareWidget',
                 'shareFloat', 'shareNarrow', 'viralBadge', 'sharing-buttons',
@@ -178,11 +181,11 @@ var rules =
                 ['*', 'social-toolbar'], ['*', 'SocialButton'], ['*', 'social-sidebar'],
                 'content-sharing', 'vms-social', ['*', 'share-widget']]},
      {tag: ['menu', 'section', 'ul', 'div', 'aside', 'nav', 'a', 'span', 'li'],
-      "class": [['*', 'social_badge'], ['*', 'social-bookmarking'], 'social', 'social_menu', 'socialwrap', 'share-bar', 'social-tools', 'ShareRail', ['*', '_pin_it_'],
+      "class": [['*', 'social_badge'], ['*', 'social-bookmarking'], 'social', 'social_menu', 'socialwrap', 'share-bar', 'social-tools', 'ShareRail', ['*', '_pin_it_'], 'social-badge', 'share',
                 'social-bar',  ['*', 'sharrre'], 'shareActions',
                 'share', ['*', 'social-buttons']]},
      {tag: ['menu', 'section', 'ul', 'div'],
-      "id": ['social_badges', 'sharebar', 'social-count']},
+      "id": ['social_badges', 'sharetools', 'sharebar', 'social-count', 'sharing', 'sharing-wrap']},
      {tag: ['div','aside'],
       id: [['*', 'share-toolbar'], ['*', 'socialbar'], 'sharing', 'sharer',
            'socialToolbar', 'shareBar', 'article-sharebox',
@@ -198,6 +201,7 @@ var rules =
             [['*', '://apis.google.com/'], ['*', 'badge/']],
             ['*', 'tmblr.com/share'],
             ['*', 'plusone.google.com/_/+1'],
+            ['*', '/sharebutton?plusShare=true'],
             ['*', 'twitter.com/share'],
             ['*', 'facebook.com/plugins/facepile.php'],
             ['*', 'facebook.com/share'],
@@ -210,19 +214,12 @@ var rules =
             ['*', 'facebook.com/plugins/share_button'],
             ['*', 'facebook.com/plugins/like']]}];
 
-var processed   = process_rules(rules);
-var selector    = processed.join(", ");
-var css         = selector + '{display:none !important;}';
-var revert_css  = selector + '{display:block !important;}';
+var processed   = process_rules(rules).map(function(rule) {
+    return rule + "{display:none!important;}\n\n";});
+var css         = processed.join("");
 
 fs.writeFile("block.css", css, function(err) {
     if (err)
         console.log(err);
     else
         console.log('build block.css successfully'); });
-
-fs.writeFile("revert-block.css", revert_css, function(err) {
-    if (err)
-        console.log(err);
-    else
-        console.log('build revert-block.css successfully'); });
