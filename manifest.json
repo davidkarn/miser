@@ -19,7 +19,7 @@
     "name" : "Miser",
     "permissions" : ["tabs", "http://*/*", "https://*/*",  "<all_urls>", "contextMenus"],
     "options_page" : "options.html",
-    "version" : "0.1",
+    "version" : "0.1.3",
     "content_security_policy" : 
     "default-src 'self' http://*.webdever.net 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self' 'unsafe-eval'; frame-src 'self' https://davidkarn.github.io ",
     "web_accessible_resources": 
