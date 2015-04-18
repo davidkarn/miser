@@ -32,6 +32,7 @@ function init() {
     sel('#settings').onclick = function() {
 	post_message({command: 'go-to-miser-settings'}); }; 
     sel('#flag').onclick = function() {
+        sel('#flag').innerHTML = "Reported Page";
 	post_message({command: 'miser-report-issue'}); }; 
     sel('#disable').onclick = function() {
 	sel('#disable').style.display = 'none';
