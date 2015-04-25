@@ -135,6 +135,9 @@ var rules =
                 return [['~', 'Share'], ['~', tag]]; }))
             .concat(social_tagnames.map(function(tag) {
                 return [['~', 'Tweet'], ['~', tag]]; })))},
+     {tag: ['li'],
+      id:  (inject_tagnames('share-<>', '*')
+            .concat(inject_tagnames('<>-share', '*')))},
      {tag: ['img', 'a', 'div'],
       title: ([]
               .concat(social_tagnames.map(function(tag) {
@@ -184,11 +187,12 @@ var rules =
       "class": [['*', 'social_badge'], ['*', 'social-bookmarking'], 'social', 'social_menu',
                 'socialwrap', 'share-bar', 'social-tools', 'ShareRail', ['*', '_pin_it_'],
                 'social-badge', 'share', ['^', 'share-tools-'], 'share-tools', 'story-tools',
-                'story-footer-tools', ['^', 'juiz_sps'],
+                'story-footer-tools', ['^', 'juiz_sps'], 'share-buttons',
                 'social-bar',  ['*', 'sharrre'], 'shareActions',
                 'share', ['*', 'social-buttons']]},
      {tag: ['menu', 'section', 'ul', 'div'],
-      "id": ['social_badges', 'slick-social', 'sharetools', 'sharebar', 'social-count', 'sharing', 'sharing-wrap']},
+      "id": ['social_badges', 'slick-social', 'sharetools', 'sharebar',
+             'social-count', 'sharing', 'sharing-wrap', ['^', 'pt-social']]},
      {tag: ['div','aside'],
       id: [['*', 'share-toolbar'], ['*', 'socialbar'], 'sharing', 'sharer', 
            'socialToolbar', 'shareBar', 'article-sharebox',
