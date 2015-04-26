@@ -133,7 +133,7 @@ strong {
   font-weight: bold;
 }
 
-img {
+#main_content_wrap img {
   position: relative;
   margin: 0 auto;
   max-width: 739px;
@@ -335,6 +335,17 @@ Full-Width Styles
   background: url(../images/sprite_download.png) no-repeat bottom left;
 }
 
+.chrome_download_link {
+  display: block;
+  float: right;
+  width: 90px;
+  height:70px;
+  margin-right: 90px;
+  text-indent: -5000px;
+  overflow: hidden;
+  background: url(../images/sprite_download.png) no-repeat bottom left;
+}
+
 .tar_download_link {
   display: block;
   float: right;
@@ -423,3 +434,10 @@ Small Device Styles
   }
 
 }
+
+
+#screenshots img {
+    width: 45%;
+    display: inline-block;
+    margin-right: 2.5%;
+    }
